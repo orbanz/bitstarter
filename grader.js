@@ -53,22 +53,23 @@ var loadChecks = function(checksfile) {
 
 var checkHtmlUrl = function(htmlurl, checksfile) {
     rest.get(htmlurl).on('complete', function(result) {
-  if (result instanceof Error) {
-    console.log('Error: ' + result.message);
-    process.exit(1);
-  } else {
-    console.log(result);
-
-    $ = cheerio.load(result.toString);
-    var checks = loadChecks(checksfile).sort();
-    var out = {};
-    for(var ii in checks) {
-        var present = $(checks[ii]).length > 0;
-        out[checks[ii]] = present;
+      if (result instanceof Error) {
+        console.log('Error: ' + result.message);
+        process.exit(1);
+      } else {
+        console.log(result);
+    
+        $ = cheerio.load(result.toString);
+        var checks = loadChecks(checksfile).sort();
+        var out = {};
+        for(var ii in checks) {
+            var present = $(checks[ii]).length > 0;
+            out[checks[ii]] = present;
+        }
+        var outJson = JSON.stringify(out, null, 4);
+        console.log(outJson);
+      }
     }
-    var outJson = JSON.stringify(out, null, 4);
-    console.log(outJson);
-  }
 };
 
 var checkHtmlFile = function(htmlfile, checksfile) {
