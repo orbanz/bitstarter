@@ -58,7 +58,7 @@ var checkHtmlUrl = function(htmlurl, checksfile) {
         process.exit(1);
       } else {
     
-        $ = cheerio.load(result.toString);
+        $ = cheerio.load(result);
         var checks = loadChecks(checksfile).sort();
         var out = {};
         for(var ii in checks) {
