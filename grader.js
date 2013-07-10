@@ -53,7 +53,7 @@ var cheerioHtmlUrl = function(htmlurl) {
     console.log('Error: ' + result.message);
     process.exit(1);
   } else {
-    return cheerio.load(result);
+    return cheerio.load(new Buffer(result.toString));
   }
 });
     
