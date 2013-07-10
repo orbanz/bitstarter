@@ -69,7 +69,7 @@ var checkHtmlUrl = function(htmlurl, checksfile) {
         var outJson = JSON.stringify(out, null, 4);
         console.log(outJson);
       }
-    }
+    });
 };
 
 var checkHtmlFile = function(htmlfile, checksfile) {
